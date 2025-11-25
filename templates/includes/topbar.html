@@ -1,0 +1,40 @@
+<!-- Top header start -->
+<header class="top-header th-2 top-header-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-7">
+                <div class="list-inline">
+                    <a href="tel:9843987654"><i class="fa fa-phone"></i>9843987654</a>
+                    <a href="mail:carzone@gmail.com"><i class="fa fa-envelope"></i>carzone@gmail.com</a>
+                    <a href="tel:9843987654"><i class="fa fa-clock-o"></i>Sun - Fri: 9:00am - 7:00am</a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-5">
+                <ul class="top-social-media pull-right">
+
+                  {% if user.is_authenticated %}
+                  <li>
+                      <a href="{% url 'dashboard' %}" class="btn btn-secondary btn-xs"><i class="fa fa-tachometer"></i> Dashboard</a>
+                  </li>
+
+                  <li>
+                      <a href="javascript:{document.getElementById('logout').submit()}" class="btn btn-danger btn-xs"><i class="fa fa-sign-out"></i> Logout</a>
+                      <form action="{% url 'logout' %}" id="logout" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden">
+                      </form>
+                  </li>
+                  {% else %}
+                    <li>
+                        <a href="{% url 'login' %}" class="btn btn-secondary btn-xs"><i class="fa fa-sign-in"></i> Login</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'register' %}" class="btn btn-secondary btn-xs"><i class="fa fa-user-plus"></i> Register</a>
+                    </li>
+                  {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Top header end -->
